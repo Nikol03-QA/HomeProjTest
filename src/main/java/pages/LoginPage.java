@@ -1,5 +1,6 @@
 package pages;
 
+import library.ActionWithElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import parentPage.ParentPage;
 
-public class LoginPage extends ParentPage {
+public class LoginPage extends ParentPage{
+//    private ActionWithElement actionWithElement;
+//    WebDriver driver;
     @FindBy (name = "email")
     private WebElement inputLogin;
     @FindBy (name = "password")
@@ -17,19 +20,21 @@ public class LoginPage extends ParentPage {
 
 
     public LoginPage(WebDriver webDriver) {
+//        this.driver=webDriver;
+//        actionWithElement = new ActionWithElement(webDriver);
         super(webDriver);
     }
 
     public void openPage(){
         try{
-           webDriver.get("https://muzline.ua/login");
+            webDriver.get("https://www.bonprix.ua/moj-profil/login?redirect=/");
         }catch (Exception e){
             Assert.fail("Couldn't open browser.");
         }
     }
     public void enterLoginInToTheField(String login){
        // webDriver.findElement(By.name("email"));
-        inputLogin.clear();
+      //  inputLogin.clear();
         actionWithElements.enterTextIntoInput(inputLogin, login);
     }
     public void enterPswdInToTheField (String password){
@@ -43,6 +48,10 @@ public class LoginPage extends ParentPage {
         enterButton.click();
         logger.info("The button was clicked.");
     }
-
-
+   public void allLoginSteps (String login, String password){
+        openPage();
+        enterLoginInToTheField(login);
+        enterPswdInToTheField(password);
+        clickOnButtonEnter();
+   }
 }

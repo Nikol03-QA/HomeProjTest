@@ -3,25 +3,22 @@ package loginTest;
 
 import abstractParentTest.AbstractParentTest;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
 
-public class LoginPageObject extends AbstractParentTest {
+public class LoginPageObjectTest extends AbstractParentTest {
 
-
-    public LoginPageObject(WebDriver webDriver) {
-        super(webDriver);
-    }
 
     @Test
     public void CorrectLogin (){
         loginPage.openPage();
         loginPage.enterLoginInToTheField("nikolcorp@ukr.net");
-        loginPage.enterPswdInToTheField ("ae20f83990");
+        loginPage.enterPswdInToTheField ("03101989Me");
         loginPage.clickOnButtonEnter();
+
+        correctLogin("Log in is success.", !accountPage.isLoginFailed());
     }
     @Test
-    public  void InccorectLogin (){
+    public  void IncorectLogin (){
         loginPage.openPage();
         loginPage.enterLoginInToTheField("nikolcorp@ukr.net");
         loginPage.enterPswdInToTheField("dshfiruhwefw2");

@@ -10,15 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class ActionWithElement {
-    WebDriver webDriver;
+
+    protected WebDriver webDriver;
     WebDriverWait webDriverWait_10;
     WebDriverWait webDriverWait_15;
     Logger logger = Logger.getLogger(getClass());
 
     public ActionWithElement(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        webDriverWait_10 = new WebDriverWait(webDriver, 10);
-        webDriverWait_15 = new WebDriverWait(webDriver, 15);
+        this.webDriver=webDriver;
+//        webDriverWait_10 = new WebDriverWait(webDriver, 10);
+//        webDriverWait_15 = new WebDriverWait(webDriver, 15);
     }
     public void enterTextIntoInput (WebElement webElement, String text){
         try{
@@ -34,6 +35,5 @@ public class ActionWithElement {
         logger.error("Can not work with element ");
         Assert.fail("Can not work with element ");
     }
-
     }
 
